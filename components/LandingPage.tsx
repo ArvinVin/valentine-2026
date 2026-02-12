@@ -12,8 +12,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
         <div className="absolute -inset-1 bg-gradient-to-r from-rose-400 to-pink-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative">
           <img
-            // src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1000&auto=format&fit=crop" 
-            src="assets/aaa.png"
+            src="https://files.fivemerr.com/images/921105ea-332f-446a-aeb6-0976e7599b03.png" 
+            // src="assets/aaa.png"
             alt="Romantic Valentine"
             className="rounded-2xl shadow-2xl border-4 border-white/80 w-full max-w-sm mx-auto transform transition duration-500 hover:rotate-1 object-cover h-64 md:h-80"
           />

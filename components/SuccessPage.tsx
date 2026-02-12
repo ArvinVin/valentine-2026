@@ -50,21 +50,39 @@ const SuccessPage: React.FC<SuccessPageProps> = ({ onReset, onClaimed }) => {
   };
 
   const handleClaim = () => {
-    const fileName = `${selectedPlace}.png`;
-    const filePath = `assets/${fileName}`;
+    // 1. Buat daftar link sesuai dengan nama tempatnya
+    const downloadLinks = {
+        'Yao Hotpot': 'https://files.fivemerr.com/images/c4608b5f-5e99-4b5f-8f27-cca832aa0660.png',
+        'Sushimaru': 'https://files.fivemerr.com/images/b1fbe0c8-6e0f-48f5-9b39-1c98eaf8711d.png',
+        'Sukiyakirin': 'https://files.fivemerr.com/images/f16d32ef-2703-4d69-ac40-05a5309c7650.png',
+        'Beautiful Night': 'https://files.fivemerr.com/images/8737e53e-3fc8-41c6-bc2d-6ca524858826.png',
+        'Animale': 'https://files.fivemerr.com/images/121ae795-4fdf-45e5-b51b-2c4a20dd0fc7.png',
+        'Aged Butchered': 'https://files.fivemerr.com/images/e111a2f3-6dca-4fda-994c-299017175ddd.png'
+    };
 
-    const link = document.createElement('a');
-    link.href = filePath;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // 2. Ambil URL berdasarkan selectedPlace
+    // Pastikan isi variabel 'selectedPlace' sama persis dengan kunci di atas (huruf kecil/spasi)
+    const targetUrl = downloadLinks[selectedPlace];
+    const fileName = `${selectedPlace}.png`;
+
+    // Cek jika link ditemukan
+    if (targetUrl) {
+        const link = document.createElement('a');
+        link.href = targetUrl;
+        link.download = fileName;
+        link.target = '_blank'; // Opsional: untuk memastikan tetap terbuka jika download otomatis gagal
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        console.error('Link tidak ditemukan untuk:', selectedPlace);
+    }
 
     // Alert then proceed to the next page
     setTimeout(() => {
-      onClaimed();
+        onClaimed();
     }, 500);
-  };
+};
 
   return (
     <div className="space-y-8 animate-in fade-in zoom-in slide-in-from-bottom-10 duration-1000 max-w-md mx-auto relative">
